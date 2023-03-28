@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://20fxx10d7u44"]
+
+[ext_resource type="PackedScene" uid="uid://5gx3xx6yoe6u" path="res://Scenes/WheeledVehicle2D.tscn" id="1_d8axa"]
+[ext_resource type="PackedScene" uid="uid://b0td6ydbgynxa" path="res://Scenes/Wheel2D.tscn" id="2_hxilq"]
+[ext_resource type="Texture2D" uid="uid://df4ll8raydl15" path="res://Demo/Assets/car_drivetrain.png" id="3_e85k2"]
+[ext_resource type="Texture2D" uid="uid://buh5fjes6he2" path="res://Demo/Assets/car_steering_bar.png" id="4_af7pn"]
+[ext_resource type="Texture2D" uid="uid://dl23kshweylmw" path="res://Demo/Assets/car_frame.png" id="5_irdjh"]
+[ext_resource type="Texture2D" uid="uid://xmk0cymyx4no" path="res://Demo/Assets/car/car_body.png" id="6_rxnxj"]
+[ext_resource type="Texture2D" uid="uid://dl68bb1t3d8ki" path="res://Demo/Assets/car/reverse_car.png" id="7_6djef"]
+[ext_resource type="Texture2D" uid="uid://bs30u8s4vx5dn" path="res://Demo/Assets/car/headlights_car.png" id="8_ogrv2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_upew5"]
+friction = 0.3
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_akgg3"]
+resource_local_to_scene = true
+radius = 26.0
+height = 130.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6k8bp"]
+load_path = "res://.godot/imported/brakes_car.png-306506c2d361d000e54b2f61373db28e.ctex"
+
+[node name="Car" instance=ExtResource("1_d8axa")]
+mass = 900.0
+physics_material_override = SubResource("PhysicsMaterial_upew5")
+gravity_scale = 0.0
+linear_damp = 0.2
+angular_damp = 0.25
+max_power = 120000.0
+acceleration = 1.1
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_akgg3")
+
+[node name="Wheel" parent="Wheels" index="0" instance=ExtResource("2_hxilq")]
+position = Vector2(32.5, -22)
+steers = true
+driven = true
+brakes = true
+brake_force_fast = 100
+brake_force_slow = 400
+brake_low_speed = 300
+brake_high_speed = 900
+skid_traction_slow = 2.5
+skid_low_speed = 300
+skid_high_speed = 800
+
+[node name="Wheel2" parent="Wheels" index="1" instance=ExtResource("2_hxilq")]
+position = Vector2(32.5, 22)
+steers = true
+driven = true
+brakes = true
+brake_force_fast = 100
+brake_force_slow = 400
+brake_low_speed = 300
+brake_high_speed = 900
+skid_traction_slow = 2.5
+skid_low_speed = 300
+skid_high_speed = 800
+
+[node name="Wheel3" parent="Wheels" index="2" instance=ExtResource("2_hxilq")]
+position = Vector2(-31.5, -22)
+brakes = true
+brake_force_fast = 100
+brake_force_slow = 400
+brake_low_speed = 300
+brake_high_speed = 900
+skid_traction_slow = 2.5
+skid_low_speed = 300
+skid_high_speed = 800
+
+[node name="Wheel4" parent="Wheels" index="3" instance=ExtResource("2_hxilq")]
+position = Vector2(-31.5, 22)
+brakes = true
+brake_force_fast = 100
+brake_force_slow = 400
+brake_low_speed = 300
+brake_high_speed = 900
+skid_traction_slow = 2.5
+skid_low_speed = 300
+skid_high_speed = 800
+
+[node name="Drivetrain" type="Sprite2D" parent="Internals" index="0"]
+position = Vector2(5, 0)
+rotation = 1.5708
+texture = ExtResource("3_e85k2")
+
+[node name="SteeringRack" type="Sprite2D" parent="Internals" index="1"]
+position = Vector2(31, 0)
+rotation = 1.5708
+texture = ExtResource("4_af7pn")
+
+[node name="Frame" type="Sprite2D" parent="Internals" index="2"]
+rotation = 1.5708
+texture = ExtResource("5_irdjh")
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("6_rxnxj")
+
+[node name="Brakes" parent="." index="4"]
+position = Vector2(-60.5, 0)
+texture = SubResource("CompressedTexture2D_6k8bp")
+
+[node name="Reverse" parent="." index="5"]
+position = Vector2(-61.5, 0)
+texture = ExtResource("7_6djef")
+
+[node name="Headlights" parent="." index="6"]
+position = Vector2(58.5, 0)
+rotation = 1.5708
+texture = ExtResource("8_ogrv2")

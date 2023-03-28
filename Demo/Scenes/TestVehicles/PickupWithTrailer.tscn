@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1wnpsgdyvimw"]
+
+[ext_resource type="PackedScene" uid="uid://ch72sw3g8ie4d" path="res://Demo/Scenes/TestVehicles/Pickup.tscn" id="1_tj07u"]
+[ext_resource type="PackedScene" uid="uid://0k6jcg1mvpet" path="res://Demo/Scenes/TestVehicles/TrailerSmall.tscn" id="2_ttvl5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0c0er"]
+resource_local_to_scene = true
+radius = 28.0
+height = 138.0
+
+[node name="PickupWithTrailer" instance=ExtResource("1_tj07u")]
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_0c0er")
+
+[node name="Hitch2D" parent="." index="8"]
+node_b = NodePath("../TrailerSmall")
+
+[node name="TrailerSmall" parent="." index="9" instance=ExtResource("2_ttvl5")]
+position = Vector2(-123, 0)

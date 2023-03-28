@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://5gx3xx6yoe6u"]
+
+[ext_resource type="PackedScene" uid="uid://b3vi8byqnpmvh" path="res://Scenes/TestVehicle2D.tscn" id="1_2khk2"]
+[ext_resource type="Script" path="res://Scripts/WheeledVehicle2D.gd" id="2_m18kv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xob3w"]
+resource_local_to_scene = true
+radius = 24.0
+height = 128.0
+
+[node name="WheeledVehicle2D" instance=ExtResource("1_2khk2")]
+script = ExtResource("2_m18kv")
+camera_origin = NodePath("CameraOrigin")
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_xob3w")
+
+[node name="Internals" type="Node2D" parent="." index="2"]
+visible = false
+
+[node name="CarBody" type="Sprite2D" parent="." index="3"]
+z_index = 5
+rotation = 1.57079
+
+[node name="Brakes" type="Sprite2D" parent="." index="4"]
+visible = false
+z_index = 6
+position = Vector2(-56.5, 0)
+rotation = 1.57079
+
+[node name="Reverse" type="Sprite2D" parent="." index="5"]
+visible = false
+z_index = 6
+position = Vector2(-56.5, 0)
+rotation = 1.57079
+
+[node name="Headlights" type="Sprite2D" parent="." index="6"]
+visible = false
+z_index = 6
+
+[node name="CameraOrigin" type="Node2D" parent="." index="7"]

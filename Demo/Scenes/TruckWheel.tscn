@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://lueig1sj4y0e"]
+
+[ext_resource type="PackedScene" uid="uid://b0td6ydbgynxa" path="res://Scenes/Wheel2D.tscn" id="1_6q0kq"]
+[ext_resource type="Texture2D" uid="uid://ifyjtdp0sbpl" path="res://Demo/Assets/truck/truck_wheel.png" id="2_vpn00"]
+
+[node name="TruckWheel" instance=ExtResource("1_6q0kq")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_vpn00")

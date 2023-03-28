@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcvtbvqadte6e"]
+
+[ext_resource type="PackedScene" uid="uid://b3vi8byqnpmvh" path="res://Scenes/TestVehicle2D.tscn" id="1_hr3b5"]
+[ext_resource type="Script" path="res://Scripts/TrackedVehicle2D.gd" id="2_5sb3g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cpya"]
+resource_local_to_scene = true
+radius = 24.0
+height = 128.0
+
+[node name="TrackedVehicle2D" instance=ExtResource("1_hr3b5")]
+script = ExtResource("2_5sb3g")
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_1cpya")
+
+[node name="Internals" type="Node2D" parent="." index="2"]
+visible = false
+
+[node name="CarBody" type="Sprite2D" parent="." index="3"]
+z_index = 5
+rotation = 1.57079
+
+[node name="Headlights" type="Sprite2D" parent="." index="4"]
+visible = false
+z_index = 6
+
+[node name="CameraOrigin" type="Node2D" parent="." index="5"]

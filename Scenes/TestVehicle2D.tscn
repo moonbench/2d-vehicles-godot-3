@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3vi8byqnpmvh"]
+
+[ext_resource type="PackedScene" uid="uid://cxocesjrkenuf" path="res://Scenes/Vehicle2D.tscn" id="1_bfq0q"]
+[ext_resource type="Script" path="res://Scripts/TestVehicle2D.gd" id="2_67gy7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2e2cf"]
+resource_local_to_scene = true
+radius = 24.0
+height = 128.0
+
+[node name="TestVehicle2D" instance=ExtResource("1_bfq0q")]
+sleeping = true
+script = ExtResource("2_67gy7")
+gear = 0
+camera_origin = null
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_2e2cf")

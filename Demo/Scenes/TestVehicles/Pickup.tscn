@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch72sw3g8ie4d"]
+
+[ext_resource type="PackedScene" uid="uid://20fxx10d7u44" path="res://Demo/Scenes/TestVehicles/Car.tscn" id="1_m2cnq"]
+[ext_resource type="Texture2D" uid="uid://b6ki4fmdpgojg" path="res://Demo/Assets/truck/pickup_truck_body.png" id="2_doka1"]
+[ext_resource type="Texture2D" uid="uid://cytv7ixkjl2yb" path="res://Demo/Assets/truck/brakes_pickup.png" id="3_xkab0"]
+[ext_resource type="Texture2D" uid="uid://rx0vi6e6fyso" path="res://Demo/Assets/truck/reverse_pickup.png" id="4_r3bws"]
+[ext_resource type="Texture2D" uid="uid://cs07eywk3ok5g" path="res://Demo/Assets/truck/headlights_pickup.png" id="5_6swl1"]
+[ext_resource type="PackedScene" uid="uid://deehxmh7gk8ae" path="res://Scenes/Hitch2D.tscn" id="6_r5bf7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73vxw"]
+resource_local_to_scene = true
+radius = 28.0
+height = 138.0
+
+[node name="Pickup" instance=ExtResource("1_m2cnq")]
+mass = 1000.0
+max_power = 135000.0
+acceleration = 1.0
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_73vxw")
+
+[node name="Wheel" parent="Wheels" index="0"]
+position = Vector2(43, -22)
+skid_traction_slow = 2.75
+
+[node name="Wheel2" parent="Wheels" index="1"]
+position = Vector2(43, 22)
+skid_traction_slow = 2.75
+
+[node name="Wheel3" parent="Wheels" index="2"]
+position = Vector2(-37, -22)
+skid_traction_slow = 2.75
+
+[node name="Wheel4" parent="Wheels" index="3"]
+position = Vector2(-37, 22)
+skid_traction_slow = 2.75
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("2_doka1")
+
+[node name="Brakes" parent="." index="4"]
+position = Vector2(-63.5, 0)
+texture = ExtResource("3_xkab0")
+
+[node name="Reverse" parent="." index="5"]
+position = Vector2(-64.5, 0)
+texture = ExtResource("4_r3bws")
+
+[node name="Headlights" parent="." index="6"]
+texture = ExtResource("5_6swl1")
+
+[node name="Hitch2D" parent="." index="8" instance=ExtResource("6_r5bf7")]
+position = Vector2(-73, 0)
+node_a = NodePath("..")

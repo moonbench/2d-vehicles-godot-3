@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxocesjrkenuf"]
+
+[ext_resource type="Script" path="res://Scripts/Vehicle2D.gd" id="1_4mvhd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_feo86"]
+resource_local_to_scene = true
+radius = 24.0
+height = 128.0
+
+[node name="Vehicle2D" type="RigidBody2D"]
+script = ExtResource("1_4mvhd")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_feo86")
+
+[node name="Wheels" type="Node2D" parent="."]

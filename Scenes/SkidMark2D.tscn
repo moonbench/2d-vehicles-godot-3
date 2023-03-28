@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" uid="uid://c4v5codn1s5fp" path="res://Demo/Assets/car/skid.png" id="1_7h5sg"]
+[ext_resource type="Script" path="res://Scripts/SkidMark2D.gd" id="1_llngc"]
+
+[sub_resource type="Curve" id="Curve_w0hon"]
+_data = [Vector2(0, 0.627273), 0.0, -0.068796, 0, 0, Vector2(0.342857, 0.827273), 1.15894, 1.15894, 0, 0, Vector2(0.757143, 1), -0.293113, -0.293113, 0, 0, Vector2(1, 0.854545), -0.164223, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_q63jb"]
+offsets = PackedFloat32Array(0, 0.185567, 0.762887, 1)
+colors = PackedColorArray(0.184314, 0.184314, 0.184314, 0.0588235, 0.12549, 0.12549, 0.12549, 0.596078, 0.0705882, 0.0705882, 0.0705882, 0.866667, 0.184314, 0.184314, 0.184314, 0.156863)
+
+[sub_resource type="Animation" id="Animation_r7muq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_maa58"]
+resource_name = "fade_out"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37ufl"]
+_data = {
+"RESET": SubResource("Animation_r7muq"),
+"fade_out": SubResource("Animation_maa58")
+}
+
+[node name="SkidMark" type="Line2D"]
+z_index = 2
+z_as_relative = false
+width = 5.0
+width_curve = SubResource("Curve_w0hon")
+default_color = Color(0.184314, 0.184314, 0.184314, 1)
+gradient = SubResource("Gradient_q63jb")
+texture = ExtResource("1_7h5sg")
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 2
+script = ExtResource("1_llngc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_37ufl")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

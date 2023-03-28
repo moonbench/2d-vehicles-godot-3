@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4eicnkm1rwq"]
+
+[ext_resource type="PackedScene" uid="uid://5gx3xx6yoe6u" path="res://Scenes/WheeledVehicle2D.tscn" id="1_os6kf"]
+[ext_resource type="Script" path="res://Demo/Scripts/Motorcycle.gd" id="2_6nfmu"]
+[ext_resource type="PackedScene" uid="uid://dfmx1p6ov0q8h" path="res://Demo/Scenes/MotorcycleWheel.tscn" id="2_trqjy"]
+[ext_resource type="Texture2D" uid="uid://c2clw8b1io8ux" path="res://Demo/Assets/motorcycle/motorcycle_body.png" id="3_q288k"]
+[ext_resource type="Texture2D" uid="uid://2pd3ddjhtdon" path="res://Demo/Assets/motorcycle/motorcycle_body_fender.png" id="4_ffkdf"]
+[ext_resource type="Texture2D" uid="uid://uv0namxnaduh" path="res://Demo/Assets/motorcycle/motorcycle_brakes_lit.png" id="6_re7jw"]
+[ext_resource type="Texture2D" uid="uid://numwcj640t8s" path="res://Demo/Assets/motorcycle/motorcycle_reverse_lit.png" id="7_3g1y2"]
+[ext_resource type="Texture2D" uid="uid://wtg8pl16uvhg" path="res://Demo/Assets/motorcycle/motorcycle_headlights.png" id="8_hxpry"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dr1j"]
+resource_local_to_scene = true
+radius = 7.0
+height = 64.0
+
+[node name="Motorcycle" instance=ExtResource("1_os6kf")]
+mass = 250.0
+script = ExtResource("2_6nfmu")
+steering_speed = 3.0
+max_power = 35000.0
+acceleration = 3.0
+
+[node name="CollisionShape" parent="." index="0"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_3dr1j")
+
+[node name="MotorcycleWheel" parent="Wheels" index="0" instance=ExtResource("2_trqjy")]
+position = Vector2(27, 0)
+steers = true
+steering_limit = 0.85
+brakes = true
+
+[node name="MotorcycleWheel2" parent="Wheels" index="1" instance=ExtResource("2_trqjy")]
+position = Vector2(-20, 0)
+steering_limit = 0.85
+driven = true
+brakes = true
+
+[node name="FrontBody" type="Node2D" parent="." index="3"]
+z_index = 5
+position = Vector2(27, 0)
+
+[node name="FrontBody" type="Sprite2D" parent="FrontBody" index="0"]
+rotation = 1.5708
+texture = ExtResource("4_ffkdf")
+
+[node name="CarBody" parent="." index="4"]
+texture = ExtResource("3_q288k")
+
+[node name="Brakes" parent="." index="5"]
+position = Vector2(-23, 0)
+texture = ExtResource("6_re7jw")
+
+[node name="Reverse" parent="." index="6"]
+position = Vector2(-23, 0)
+texture = ExtResource("7_3g1y2")
+
+[node name="Headlights" parent="." index="7"]
+position = Vector2(27, 0)
+rotation = 1.5708
+texture = ExtResource("8_hxpry")
+offset = Vector2(0, -2)

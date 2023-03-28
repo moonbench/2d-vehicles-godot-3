@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://0k6jcg1mvpet"]
+
+[ext_resource type="PackedScene" uid="uid://5gx3xx6yoe6u" path="res://Scenes/WheeledVehicle2D.tscn" id="1_uqdt8"]
+[ext_resource type="PackedScene" uid="uid://b0td6ydbgynxa" path="res://Scenes/Wheel2D.tscn" id="2_65syp"]
+[ext_resource type="Texture2D" uid="uid://ccivyyrgyo28u" path="res://Demo/Assets/truck/trailer.png" id="3_c3o3f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cs6k5"]
+resource_local_to_scene = true
+radius = 29.0
+height = 88.0
+
+[node name="TrailerSmall" instance=ExtResource("1_uqdt8")]
+mass = 450.0
+
+[node name="CollisionShape" parent="." index="0"]
+position = Vector2(-7, 0)
+shape = SubResource("CapsuleShape2D_cs6k5")
+
+[node name="Wheel" parent="Wheels" index="0" instance=ExtResource("2_65syp")]
+position = Vector2(-22, -24)
+
+[node name="Wheel2" parent="Wheels" index="1" instance=ExtResource("2_65syp")]
+position = Vector2(-22, 23)
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("3_c3o3f")

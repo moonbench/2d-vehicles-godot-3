@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cojdqjvrvv0t7"]
+
+[ext_resource type="PackedScene" uid="uid://dc6j2x8jcweh1" path="res://Demo/Scenes/TestVehicles/CarNice.tscn" id="1_0vuy6"]
+[ext_resource type="Texture2D" uid="uid://58dvkyxtf1b5" path="res://Demo/Assets/sports_car_body.png" id="2_40xsn"]
+[ext_resource type="Texture2D" uid="uid://62st8asnkw36" path="res://Demo/Assets/car/headlights_car_sport.png" id="3_axmes"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpopi"]
+resource_local_to_scene = true
+radius = 26.0
+height = 130.0
+
+[node name="CarSport" instance=ExtResource("1_0vuy6")]
+mass = 850.0
+angular_damp = 0.5
+max_power = 250000.0
+acceleration = 5.0
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_xpopi")
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("2_40xsn")
+
+[node name="Headlights" parent="." index="6"]
+texture = ExtResource("3_axmes")

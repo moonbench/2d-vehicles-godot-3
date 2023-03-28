@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b42llnol2isro"]
+
+[ext_resource type="Script" path="res://Scripts/Track2D.gd" id="2_cvx3d"]
+[ext_resource type="Texture2D" uid="uid://j5xndyb7mk1d" path="res://Demo/Assets/arrow.png" id="2_wyq7k"]
+
+[node name="Track2D" type="Node2D"]
+script = ExtResource("2_cvx3d")
+driven = true
+brakes = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_wyq7k")

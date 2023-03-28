@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0td6ydbgynxa"]
+
+[ext_resource type="Script" path="res://Scripts/Wheel2D.gd" id="1_efvs6"]
+[ext_resource type="Texture2D" uid="uid://bjaygl6f7rbm5" path="res://Demo/Assets/car/car_wheel.png" id="2_entry"]
+[ext_resource type="Texture2D" uid="uid://cgdegmep22wsp" path="res://Demo/Assets/puff.png" id="3_b5gwc"]
+
+[sub_resource type="Gradient" id="Gradient_xho1x"]
+offsets = PackedFloat32Array(0, 0.592593, 1)
+colors = PackedColorArray(0.796078, 0.796078, 0.796078, 0.745098, 0.890196, 0.890196, 0.890196, 0.552941, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y0oqc"]
+gradient = SubResource("Gradient_xho1x")
+
+[sub_resource type="Curve" id="Curve_v7b1s"]
+max_value = 1.5
+_data = [Vector2(0, 0.545455), 0.0, 0.130232, 0, 0, Vector2(0.616071, 1.00909), 3.05455, 3.05455, 0, 0, Vector2(1, 1.5), 0.231405, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2jmtu"]
+curve = SubResource("Curve_v7b1s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qnjyd"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -45.0
+angle_max = 45.0
+scale_curve = SubResource("CurveTexture_2jmtu")
+color_ramp = SubResource("GradientTexture1D_y0oqc")
+
+[node name="Wheel" type="Node2D"]
+script = ExtResource("1_efvs6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.57079
+texture = ExtResource("2_entry")
+
+[node name="SkidParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_qnjyd")
+texture = ExtResource("3_b5gwc")
+lifetime = 2.5
+randomness = 0.25

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfmx1p6ov0q8h"]
+
+[ext_resource type="PackedScene" uid="uid://b0td6ydbgynxa" path="res://Scenes/Wheel2D.tscn" id="1_saqjy"]
+[ext_resource type="Texture2D" uid="uid://xjx27pmm1dt6" path="res://Demo/Assets/motorcycle/motorcycle_wheel.png" id="2_qc3l4"]
+
+[node name="MotorcycleWheel" instance=ExtResource("1_saqjy")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_qc3l4")

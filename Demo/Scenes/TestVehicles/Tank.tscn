@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl65ndv62kxi2"]
+
+[ext_resource type="PackedScene" uid="uid://dcvtbvqadte6e" path="res://Scenes/TrackedVehicle2D.tscn" id="1_1c2cb"]
+[ext_resource type="Script" path="res://Demo/Scripts/Tank.gd" id="2_r4wyi"]
+[ext_resource type="PackedScene" uid="uid://b42llnol2isro" path="res://Scenes/Track2D.tscn" id="2_y652m"]
+[ext_resource type="Texture2D" uid="uid://chodkxewdrfg3" path="res://Demo/Assets/military/tank_body.png" id="3_rpgk2"]
+[ext_resource type="PackedScene" uid="uid://db8nc1n2yxasm" path="res://Scenes/Turret2D.tscn" id="4_8dty8"]
+[ext_resource type="Texture2D" uid="uid://cc7du1ik0uesh" path="res://Demo/Assets/military/tankturret.png" id="5_f6grs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iovqr"]
+friction = 0.6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kf6o"]
+size = Vector2(126, 265)
+
+[node name="Tank" instance=ExtResource("1_1c2cb")]
+mass = 40000.0
+physics_material_override = SubResource("PhysicsMaterial_iovqr")
+gravity_scale = 0.0
+linear_damp = 0.25
+angular_damp = 0.45
+script = ExtResource("2_r4wyi")
+camera_origin = NodePath("CameraOrigin")
+max_power = 3e+06
+
+[node name="CollisionShape" parent="." index="0"]
+position = Vector2(1.5002, 0.000831619)
+shape = SubResource("RectangleShape2D_3kf6o")
+
+[node name="Track2D" parent="Wheels" index="0" instance=ExtResource("2_y652m")]
+position = Vector2(0, -48)
+brake_force_fast = 5000
+brake_force_slow = 20000
+
+[node name="Track2D2" parent="Wheels" index="1" instance=ExtResource("2_y652m")]
+position = Vector2(0, 48)
+brake_force_fast = 5000
+brake_force_slow = 20000
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("3_rpgk2")
+
+[node name="Turret2D" parent="." index="6" instance=ExtResource("4_8dty8")]
+
+[node name="Sprite2D" parent="Turret2D" index="0"]
+position = Vector2(50, 0)
+rotation = 1.5708
+texture = ExtResource("5_f6grs")
+
+[connection signal="current_changed" from="." to="." method="_on_current_changed"]
+
+[editable path="Turret2D"]

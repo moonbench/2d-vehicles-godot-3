@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://lrhxil3pfo4f" path="res://Demo/Assets/military/tanktrack.png" id="1_mvjgr"]
+
+[sub_resource type="Curve" id="Curve_irhoi"]
+max_value = 1.1
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.230435, 1.06), 0.0, 0.0, 0, 0, Vector2(0.504348, 0.98), 0.0, 0.0, 0, 0, Vector2(0.769565, 1.07), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_ct7ay"]
+offsets = PackedFloat32Array(0, 0.149733, 1)
+colors = PackedColorArray(0.105882, 0.105882, 0.105882, 0, 0.105882, 0.105882, 0.105882, 0.0941176, 0.105882, 0.105882, 0.105882, 0.0941176)
+
+[node name="TrackMark2D" type="Line2D"]
+z_index = 2
+z_as_relative = false
+width = 30.0
+width_curve = SubResource("Curve_irhoi")
+gradient = SubResource("Gradient_ct7ay")
+texture = ExtResource("1_mvjgr")
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 1
+round_precision = 3

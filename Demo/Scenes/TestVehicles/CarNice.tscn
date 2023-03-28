@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc6j2x8jcweh1"]
+
+[ext_resource type="PackedScene" uid="uid://20fxx10d7u44" path="res://Demo/Scenes/TestVehicles/Car.tscn" id="1_3j45e"]
+[ext_resource type="Texture2D" uid="uid://d18wqkbcbrl8c" path="res://Demo/Assets/car_body.png" id="2_hqsw6"]
+[ext_resource type="Texture2D" uid="uid://dthqcmv0sxaja" path="res://Demo/Assets/car_brakes_lit.png" id="3_j7rps"]
+[ext_resource type="Texture2D" uid="uid://vbncvvr2nmpa" path="res://Demo/Assets/car_reverse_lit.png" id="4_iby4b"]
+[ext_resource type="Texture2D" uid="uid://dcabag5d2172o" path="res://Demo/Assets/car/headlights_car_nice.png" id="5_eu6em"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a04y5"]
+resource_local_to_scene = true
+radius = 26.0
+height = 130.0
+
+[node name="CarNice" instance=ExtResource("1_3j45e")]
+max_power = 175000.0
+acceleration = 2.0
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_a04y5")
+
+[node name="Wheel" parent="Wheels" index="0"]
+driven = false
+
+[node name="Wheel2" parent="Wheels" index="1"]
+driven = false
+
+[node name="Wheel3" parent="Wheels" index="2"]
+driven = true
+
+[node name="Wheel4" parent="Wheels" index="3"]
+driven = true
+
+[node name="CarBody" parent="." index="3"]
+texture = ExtResource("2_hqsw6")
+
+[node name="Brakes" parent="." index="4"]
+position = Vector2(-56.5, 0)
+texture = ExtResource("3_j7rps")
+
+[node name="Reverse" parent="." index="5"]
+position = Vector2(-56.5, 0)
+texture = ExtResource("4_iby4b")
+
+[node name="Headlights" parent="." index="6"]
+position = Vector2(54.5, 0)
+texture = ExtResource("5_eu6em")

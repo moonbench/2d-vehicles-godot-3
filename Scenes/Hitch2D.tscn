@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://deehxmh7gk8ae"]
+
+[node name="Hitch2D" type="PinJoint2D"]
+bias = 0.9
+disable_collision = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 7.0
+offset_bottom = 2.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)

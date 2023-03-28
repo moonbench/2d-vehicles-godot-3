@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://db8nc1n2yxasm"]
+
+[ext_resource type="Script" path="res://Scripts/Turret2D.gd" id="1_auxau"]
+
+[node name="Turret2D" type="Node2D"]
+z_index = 10
+z_as_relative = false
+script = ExtResource("1_auxau")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
